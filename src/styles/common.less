@@ -1,0 +1,261 @@
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  min-width: 1440px;
+}
+
+.flex {
+  display: flex;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// D-DIN字体
+@font-face {
+  font-family: 'D-DIN';
+  src: url('../assets/font/D-DIN-Bold.otf');
+}
+
+// 无限旋转动画
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}
+
+// 表格操作区样式
+.table-operation {
+  display: flex;
+  align-items: center;
+  gap: 0 8px;
+}
+
+// 修改滚动条样式，改为圆角滚动条
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(197, 197, 199, 0.5);
+}
+// 激活时的滚动条样式
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 197, 199, 1);
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+#app .ps {
+  &:hover {
+    .ps__rail-y,
+    .ps__rail-x {
+      width: 8px;
+      height: 8px;
+      opacity: 1;
+    }
+  }
+  .ps__rail-y,
+  .ps__rail-x {
+    width: 8px;
+    height: 8px;
+  }
+  .ps__thumb-y,
+  .ps__thumb-x {
+    width: 5px;
+    height: 5px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(112, 112, 115, 0.5);
+  }
+  .ps__rail-y:hover > .ps__thumb-y,
+  .ps__rail-y:focus > .ps__thumb-y,
+  .ps__rail-y.ps--clicking .ps__thumb-y,
+  .ps__rail-x:hover > .ps__thumb-x,
+  .ps__rail-x:focus > .ps__thumb-x,
+  .ps__rail-x.ps--clicking .ps__thumb-x {
+    width: 5px;
+    height: 5px;
+    background-color: #707073;
+  }
+  .ps__rail-x:hover,
+  .ps__rail-y:hover,
+  .ps__rail-x:focus,
+  .ps__rail-y:focus,
+  .ps__rail-x.ps--clicking,
+  .ps__rail-y.ps--clicking {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+// 超出省略号
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-loader {
+  width: 21px;
+  height: 21px;
+  animation: rotate 1s linear infinite;
+  .center();
+  i {
+    font-size: 20px;
+    color: @primary1;
+  }
+}
+
+img[src=''],
+img:not([src]) {
+  opacity: 0;
+}
+
+input:-webkit-autofill {
+  // box-shadow: 0 0 0px 1000px #000000 inset !important;
+  transition: background-color 999999999s ease-in-out 0s;
+  -webkit-text-fill-color: @text1 !important;
+}
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: @text1 !important;
+}
+
+// 空数据提示
+.empty-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px 0;
+
+  > img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+  > p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: @text2;
+  }
+}
+
+// 无限加载提示
+.infinite-loading-tip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+  width: 100%;
+  // height: 60px;
+  font-size: 14px;
+  color: @text4;
+}
+
+.go-back-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid @border3;
+  background: @mask2;
+  box-shadow: 0px 1px 2px 0px rgba(2, 36, 59, 0.03);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: @text2;
+}
+
+// 媒体标签
+.media-tag {
+  height: 14px;
+  display: flex;
+  padding: 0px 6px 0px 3px;
+  align-items: center;
+  gap: 3px;
+  border-radius: 100px;
+  background: linear-gradient(180deg, #11b677 0%, #068f5b 100%);
+  box-shadow: 0px 0.5px 2px 0px rgba(37, 37, 45, 0.25);
+  color: @text1;
+  font-size: 10px;
+  font-weight: 400;
+
+  > i {
+    font-size: 10px;
+  }
+
+  &.sm {
+    height: 14px;
+  }
+
+  &.md {
+    height: 18px;
+  }
+
+  &.lg {
+    height: 30px;
+    padding: 0 11px 0 9px;
+    font-size: 14px;
+    > i {
+      font-size: 16px;
+    }
+  }
+}
+
+.g-second-page-title {
+  display: flex;
+  align-items: center;
+  .icon-arrow-go-back-line {
+    cursor: pointer;
+    display: flex;
+    width: 36px;
+    height: 36px;
+    padding: 8px 14px 8px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 8px;
+    border: 1px solid @border3;
+    background: @mask2;
+    box-shadow: @shadow-ss;
+    color: @text2;
+    margin-right: 12px;
+  }
+  .title {
+    color: @text2;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 145.455% */
+  }
+}

@@ -1,0 +1,30 @@
+.step-wrap {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  gap: 0 8px;
+  color: @text2;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  // padding: 0 28px;
+  .step,
+  > div {
+    padding: 0 6px;
+    height: 22px;
+    border-radius: 5px;
+    border: 1px solid @mask5;
+    color: @text2;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    .center();
+  }
+
+  .step {
+    height: 22px;
+    font-family: 'D-DIN';
+    font-size: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 100%);
+  }
+}
